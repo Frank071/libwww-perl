@@ -22,12 +22,16 @@ $ua->add_handler(
 );
 
 subtest 'request_send' => sub {
+    plan_tests => 2;
+    
     my $res = $ua->get('http://www.example.com');
     ok($res->is_success, 'handler should succeed');
     is($res->content,'ok','handler-provided response should be used');
 };
 
 subtest 'request_prepare' => sub {
+    plan_tests => 2;
+    
     $ua->add_handler(
         request_prepare => sub {
             # the docs say this is the way to replace the request
